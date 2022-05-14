@@ -1,6 +1,8 @@
 #ifndef _STEPPER_28BYJ48_H_
 #define _STEPPER_28BYJ48_H_
 
+#include<Arduino.h>
+
 #define _clockwise_ 0x00
 #define _anticlockwise_ 0x01
 
@@ -24,7 +26,7 @@ class Stepper_28BYJ48{
         uint64_t _Step_Counter;  /* show which step stays the motor now */
         uint64_t _StepMotor_LBS;  /* Latency between Steps (in microseconds) */
         uint64_t _StepMotor_LST;  /* Last Step's Time (in microseconds) */
-        
+        uint64_t _microtime_now;  /* show the system time in microseconds */
         void step( uint64_t _Step_to_Move , uint8_t _Step_Direction );
         void _step( long long _this_step );
         void _Motorset( uint8_t _PIN1_Signal , uint8_t _PIN2_Signal , uint8_t _PIN3_Signal , uint8_t _PIN4_Signal );
